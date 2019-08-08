@@ -79,22 +79,17 @@
 
 
 
-<meta name="description" content="TestNG入门小结初识TestNGTestNG是什么​    TestNG是一个测试框架，其灵感来自JUnit和NUnit，但引入了一些新的功能，使其功能更强大，使用更方便。TestNG是一个开源自动化测试框架;TestNG表示下一代(Next Generation的首字母)。 TestNG类似于JUnit(特别是JUnit 4)，但它不是JUnit框架的扩展。它的灵感来源于JUnit。它的目的">
+<meta name="description" content="TestNG入门小结TestNG的语法介绍Test Methods​           凡是使用了@test即可视为测试法 Test Classes ​           一个.java为一个类 Test Groups ​           一个类可以有多个methods，涉及到接口测试（需要深入了解） @Test    ：设置，例如用例之间的依赖关系 ​           (timeOu">
 <meta property="og:type" content="article">
-<meta property="og:title" content="TestNG入门-一-初识TestNG">
-<meta property="og:url" content="http://yoursite.com/2019/08/05/TestNG入门-一-初识TestNG/index.html">
+<meta property="og:title" content="TestNG入门-一-TestNG的语法介绍">
+<meta property="og:url" content="http://yoursite.com/2019/08/08/TestNG入门-一-TestNG的语法介绍/index.html">
 <meta property="og:site_name" content="Ere">
-<meta property="og:description" content="TestNG入门小结初识TestNGTestNG是什么​    TestNG是一个测试框架，其灵感来自JUnit和NUnit，但引入了一些新的功能，使其功能更强大，使用更方便。TestNG是一个开源自动化测试框架;TestNG表示下一代(Next Generation的首字母)。 TestNG类似于JUnit(特别是JUnit 4)，但它不是JUnit框架的扩展。它的灵感来源于JUnit。它的目的">
+<meta property="og:description" content="TestNG入门小结TestNG的语法介绍Test Methods​           凡是使用了@test即可视为测试法 Test Classes ​           一个.java为一个类 Test Groups ​           一个类可以有多个methods，涉及到接口测试（需要深入了解） @Test    ：设置，例如用例之间的依赖关系 ​           (timeOu">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2019/08/05/TestNG入门-一-初识TestNG/1.png">
-<meta property="og:image" content="http://yoursite.com/2019/08/05/TestNG入门-一-初识TestNG/2.png">
-<meta property="og:image" content="http://yoursite.com/2019/08/05/TestNG入门-一-初识TestNG/3.png">
-<meta property="og:image" content="http://yoursite.com/2019/08/05/TestNG入门-一-初识TestNG/4.png">
-<meta property="og:updated_time" content="2019-08-05T14:24:12.924Z">
+<meta property="og:updated_time" content="2019-08-08T04:24:55.885Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="TestNG入门-一-初识TestNG">
-<meta name="twitter:description" content="TestNG入门小结初识TestNGTestNG是什么​    TestNG是一个测试框架，其灵感来自JUnit和NUnit，但引入了一些新的功能，使其功能更强大，使用更方便。TestNG是一个开源自动化测试框架;TestNG表示下一代(Next Generation的首字母)。 TestNG类似于JUnit(特别是JUnit 4)，但它不是JUnit框架的扩展。它的灵感来源于JUnit。它的目的">
-<meta name="twitter:image" content="http://yoursite.com/2019/08/05/TestNG入门-一-初识TestNG/1.png">
+<meta name="twitter:title" content="TestNG入门-一-TestNG的语法介绍">
+<meta name="twitter:description" content="TestNG入门小结TestNG的语法介绍Test Methods​           凡是使用了@test即可视为测试法 Test Classes ​           一个.java为一个类 Test Groups ​           一个类可以有多个methods，涉及到接口测试（需要深入了解） @Test    ：设置，例如用例之间的依赖关系 ​           (timeOu">
 
 
 
@@ -124,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/08/05/TestNG入门-一-初识TestNG/">
+  <link rel="canonical" href="http://yoursite.com/2019/08/08/TestNG入门-一-TestNG的语法介绍/">
 
 
 
 
 
-  <title>TestNG入门-一-初识TestNG | Ere</title>
+  <title>TestNG入门-一-TestNG的语法介绍 | Ere</title>
   
 
 
@@ -237,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/05/TestNG入门-一-初识TestNG/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/08/TestNG入门-一-TestNG的语法介绍/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Barry Hu">
@@ -254,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">TestNG入门-一-初识TestNG</h1>
+          <h1 class="post-title" itemprop="name headline">TestNG入门-一-TestNG的语法介绍</h1>
         
 
         <div class="post-meta">
@@ -266,8 +261,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-05T22:20:54+08:00">
-                2019-08-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-08T12:21:38+08:00">
+                2019-08-08
               </time>
             
 
@@ -304,41 +299,47 @@
       
 
       
-        <h1 id="TestNG入门小结"><a href="#TestNG入门小结" class="headerlink" title="TestNG入门小结"></a>TestNG入门小结</h1><h2 id="初识TestNG"><a href="#初识TestNG" class="headerlink" title="初识TestNG"></a>初识TestNG</h2><h3 id="TestNG是什么"><a href="#TestNG是什么" class="headerlink" title="TestNG是什么"></a>TestNG是什么</h3><p>​    TestNG是一个测试框架，其灵感来自JUnit和NUnit，但引入了一些新的功能，使其功能更强大，使用更方便。TestNG是一个开源自动化测试框架;TestNG表示下一代(Next Generation的首字母)。 TestNG类似于JUnit(特别是JUnit 4)，但它不是JUnit框架的扩展。它的灵感来源于JUnit。它的目的是优于JUnit，尤其是在用于测试集成多类时</p>
-<p>​    TestNG的创始人是Cedric Beust(塞德里克·博伊斯特)。TestNG消除了大部分的旧框架的限制，使开发人员能够编写更加灵活和强大的测试。 因为它在很大程度上借鉴了Java注解(JDK5.0引入的)来定义测试，它也可以显示如何使用这个新功能在真实的Java语言生产环境中。</p>
-<h3 id="TestNG的特点"><a href="#TestNG的特点" class="headerlink" title="TestNG的特点"></a>TestNG的特点</h3><p>注解</p>
-<p>TestNG使用Java和面向对象的功能</p>
-<p>支持综合类测试(例如，默认情况下，不用创建一个新的测试每个测试方法的类的实例)</p>
-<p>独立的编译时测试代码和运行时配置/数据信息</p>
-<p>灵活的运行时配置</p>
-<p>主要介绍“测试组”。当编译测试，只要要求TestNG运行所有的“前端”的测试，或“快”，“慢”，“数据库”等</p>
-<p>支持依赖测试方法，并行测试，负载测试，局部故障</p>
-<p>灵活的插件API</p>
-<p>支持多线程测试</p>
-<h3 id="TestNG的缺点"><a href="#TestNG的缺点" class="headerlink" title="TestNG的缺点"></a>TestNG的缺点</h3><p>最初的设计，使用于单元测试，现在只用于各种测试</p>
-<p>不能依赖测试</p>
-<p>配置控制欠佳(安装/拆卸)</p>
-<p>侵入性(强制扩展类，并以某种方式命名方法)</p>
-<p>静态编程模型(不必要的重新编译)</p>
-<p>不适合管理复杂项目应用，JUnit复杂项目中测试非常棘手。</p>
-<h3 id="TestNG下载途径"><a href="#TestNG下载途径" class="headerlink" title="TestNG下载途径"></a>TestNG下载途径</h3><p>​    TestNG的官网地址：<a href="http://testng.org/doc/download.html" target="_blank" rel="noopener">http://testng.org/doc/download.html</a></p>
-<p>​    github地址：<a href="https://github.com/cbeust/testng" target="_blank" rel="noopener">https://github.com/cbeust/testng</a></p>
-<p>​    TestNG官网的教程：<a href="http://testng.org/doc/eclipse.html#eclipse-installation" target="_blank" rel="noopener">http://testng.org/doc/eclipse.html#eclipse-installation</a></p>
-<p>​    </p>
-<p>​    如果使用的是IDEA编译器，那么可以直接在代码之前添加@Test即可使用，IDEA自带TestNG</p>
-<p>​    </p>
-<p>​    安装之前的环境配置</p>
-<p>​    在使用TestNG之前，计算机上需要事先安装好Java JDK，推荐为1.8以上</p>
-<p>​       官网上的8版本即为1.8   10版本即为1.10</p>
-<p>​    </p>
-<p>​    配置方法</p>
-<p>​    因为我使用的是IDEA，所以展示一下在IDEA上的使用和配置</p>
-<p>​    首先，新建一个最普通的Java Project，配置如下：</p>
-<p><img src="/2019/08/05/TestNG入门-一-初识TestNG/1.png" alt="1"></p>
-<p><img src="/2019/08/05/TestNG入门-一-初识TestNG/2.png" alt="2"></p>
-<p>  此时，项目已经提供给我们一个Main Class，在Main类下新建任意方法，在之前打上@Test，这时Test还暂时不能使用，将鼠标移动到@Test前出现的红色小灯泡，选择“Add Testng to classpath”，IDEA会自动导入相关包和语句，之后@Test会变成黄色，这时就能正常实现它的功能了</p>
-<p><img src="/2019/08/05/TestNG入门-一-初识TestNG/3.png" alt="3"></p>
-<p><img src="/2019/08/05/TestNG入门-一-初识TestNG/4.png" alt="4"></p>
+        <h1 id="TestNG入门小结"><a href="#TestNG入门小结" class="headerlink" title="TestNG入门小结"></a>TestNG入门小结</h1><h2 id="TestNG的语法介绍"><a href="#TestNG的语法介绍" class="headerlink" title="TestNG的语法介绍"></a>TestNG的语法介绍</h2><h4 id="Test-Methods"><a href="#Test-Methods" class="headerlink" title="Test Methods"></a>Test Methods</h4><p>​           凡是使用了@test即可视为测试法</p>
+<p>Test Classes</p>
+<p>​           一个.java为一个类</p>
+<p>Test Groups</p>
+<p>​           一个类可以有多个methods，涉及到接口测试（需要深入了解）</p>
+<p>@Test    ：设置，例如用例之间的依赖关系</p>
+<p>​           (timeOut = 3000)    :执行xx时间，超过时间则抛出异常</p>
+<p>​           (enabled = false)   :不想让某个用例执行，默认为ture</p>
+<p>(priority = 2)      :按照某个顺序执行，priority为优先级，值越小，优先级越高</p>
+<p>(invocationCount = 5, invocationTimeOut = 1500):左为执行次数，右为设置超时抛出异常</p>
+<p>(dependsOnMethods={“test6”})                   :在test之前优先执行其他test</p>
+<h4 id="Assert"><a href="#Assert" class="headerlink" title="Assert"></a>Assert</h4><p>//     </p>
+<p>Assert.assertEquals(a,3, “not equals”);      :真实数据，预期数据，抛出信息</p>
+<p>Assert.assertEqualsNoOrder(（actual, expect，”message”）:判断对象是否相同，忽略排列位置</p>
+<p>​           Assert.assertFalse(布尔条件，”message”)                 :</p>
+<p>​           Assert.assertNotEquals(actual, expect, “message”)      :反之，不相等</p>
+<p>​           Assert.assertNotNull(object, “message1”)               :判断非空</p>
+<p>Assert.assertSame(actual, expect, “message”)           :内存地址级的比较</p>
+<p>​           Assert.assertNotSame(actual, expect, “message”)        :反之</p>
+<p>​           Assert.assertTrue(条件表达式, “message1”)               :判断为真</p>
+<p>SoftAssert</p>
+<p>​        软断言，不影响同test其他执行，实用</p>
+<p>​    @DataProvider   ：标记一个方法是用来给其他测试方法提供数据的方法，要求该方法必须返回是object[][]</p>
+<p>​    @Factory        ：标记一个方法是一个工厂，方法必须返回的是一个对象</p>
+<p>​    @Listeners      ：在一个测试方法定义一个监听。例如Selenium自动化测试中需要用到这个时间监听功能，方便输出日志</p>
+<p>​    @Parmeters      ：(Browser,server),提供浏览器和测试服务器地址</p>
+<h4 id="Berore"><a href="#Berore" class="headerlink" title="Berore"></a>Berore</h4><p>//  @BeforeSuite    </p>
+<p>​    @BeroreTest     </p>
+<p>​    @BeforefGroups</p>
+<p>​    @BeroreClass    启动测试的前提准备条件</p>
+<p>​    @BeforefMethod</p>
+<h4 id="After"><a href="#After" class="headerlink" title="After"></a>After</h4><p>//  @AfterSuite    </p>
+<p>​    @AfterTest</p>
+<p>​    @AfterGroup</p>
+<p>@AfterClass     测试运行结束后的步骤，一般是恢复环境到测试开始之前的状态</p>
+<p>​    @AfterMethod</p>
+<h4 id="​-关于数据传递"><a href="#​-关于数据传递" class="headerlink" title="​    关于数据传递"></a>​    关于数据传递</h4><p>//  @Test(dataProvider = “provideNumbers”)创造接口</p>
+<p>@DataProvider(name = “provideNumbers”)</p>
+<p>​    public Object[][] provideData() {</p>
+<p>​        return new Object[][] { { 10, 20, 30 }, { 100, 110, 120 }, { 200, 210, 220 } };</p>
+<p>​    }将数据传递进javaclass中</p>
 
       
     </div>
@@ -363,8 +364,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/03/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2019/08/08/TestNG入门-一-一个简单的test用例/" rel="next" title="TestNG入门-一-一个简单的test用例">
+                <i class="fa fa-chevron-left"></i> TestNG入门-一-一个简单的test用例
               </a>
             
           </div>
@@ -372,10 +373,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/08/TestNG入门-一-一个简单的test用例/" rel="prev" title="TestNG入门-一-一个简单的test用例">
-                TestNG入门-一-一个简单的test用例 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -489,7 +486,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#TestNG入门小结"><span class="nav-number">1.</span> <span class="nav-text">TestNG入门小结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#初识TestNG"><span class="nav-number">1.1.</span> <span class="nav-text">初识TestNG</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TestNG是什么"><span class="nav-number">1.1.1.</span> <span class="nav-text">TestNG是什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TestNG的特点"><span class="nav-number">1.1.2.</span> <span class="nav-text">TestNG的特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TestNG的缺点"><span class="nav-number">1.1.3.</span> <span class="nav-text">TestNG的缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TestNG下载途径"><span class="nav-number">1.1.4.</span> <span class="nav-text">TestNG下载途径</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#TestNG入门小结"><span class="nav-number">1.</span> <span class="nav-text">TestNG入门小结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#TestNG的语法介绍"><span class="nav-number">1.1.</span> <span class="nav-text">TestNG的语法介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Test-Methods"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">Test Methods</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Assert"><span class="nav-number">1.1.0.2.</span> <span class="nav-text">Assert</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Berore"><span class="nav-number">1.1.0.3.</span> <span class="nav-text">Berore</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#After"><span class="nav-number">1.1.0.4.</span> <span class="nav-text">After</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#​-关于数据传递"><span class="nav-number">1.1.0.5.</span> <span class="nav-text">​    关于数据传递</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
