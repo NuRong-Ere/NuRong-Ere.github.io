@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="TestNG入门小结TestNG-xml文件及Suite套件介绍.XML文件可以提供的功能： 可以将不同包，类的测试方法集中到一个套件中有选择的进行执行 可以重跑失败用例，节省校验时间 可以使用正则表达式筛选测试方法 可以把外部参数传入测试方法中 支持多线程的配置环境 那么，该如何创建和运用.xml’文件进行测试套件的配置呢？ 首先在src目录下创建name.xml文件，name可以为任意名字">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TestNG入门-一-TestNG-xml文件及Suite套件介绍">
+<meta property="og:url" content="http://yoursite.com/2019/08/09/TestNG入门-一-TestNG-xml文件及Suite套件介绍/index.html">
+<meta property="og:site_name" content="Ere">
+<meta property="og:description" content="TestNG入门小结TestNG-xml文件及Suite套件介绍.XML文件可以提供的功能： 可以将不同包，类的测试方法集中到一个套件中有选择的进行执行 可以重跑失败用例，节省校验时间 可以使用正则表达式筛选测试方法 可以把外部参数传入测试方法中 支持多线程的配置环境 那么，该如何创建和运用.xml’文件进行测试套件的配置呢？ 首先在src目录下创建name.xml文件，name可以为任意名字">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2019/08/09/TestNG入门-一-TestNG-xml文件及Suite套件介绍/1.png">
+<meta property="og:image" content="http://yoursite.com/2019/08/09/TestNG入门-一-TestNG-xml文件及Suite套件介绍/2.png">
+<meta property="og:image" content="http://yoursite.com/2019/08/09/TestNG入门-一-TestNG-xml文件及Suite套件介绍/3.png">
+<meta property="og:image" content="http://yoursite.com/2019/08/09/TestNG入门-一-TestNG-xml文件及Suite套件介绍/4.png">
+<meta property="og:image" content="http://yoursite.com/2019/08/09/TestNG入门-一-TestNG-xml文件及Suite套件介绍/5.png">
+<meta property="og:updated_time" content="2019-08-09T12:56:21.099Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="TestNG入门-一-TestNG-xml文件及Suite套件介绍">
+<meta name="twitter:description" content="TestNG入门小结TestNG-xml文件及Suite套件介绍.XML文件可以提供的功能： 可以将不同包，类的测试方法集中到一个套件中有选择的进行执行 可以重跑失败用例，节省校验时间 可以使用正则表达式筛选测试方法 可以把外部参数传入测试方法中 支持多线程的配置环境 那么，该如何创建和运用.xml’文件进行测试套件的配置呢？ 首先在src目录下创建name.xml文件，name可以为任意名字">
+<meta name="twitter:image" content="http://yoursite.com/2019/08/09/TestNG入门-一-TestNG-xml文件及Suite套件介绍/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/08/09/TestNG入门-一-TestNG-xml文件及Suite套件介绍/">
+
+
+
+
+
+  <title>TestNG入门-一-TestNG-xml文件及Suite套件介绍 | Ere</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Ere</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/09/TestNG入门-一-TestNG-xml文件及Suite套件介绍/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Barry Hu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ere">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">TestNG入门-一-TestNG-xml文件及Suite套件介绍</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-09T20:50:56+08:00">
+                2019-08-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="TestNG入门小结"><a href="#TestNG入门小结" class="headerlink" title="TestNG入门小结"></a>TestNG入门小结</h1><h2 id="TestNG-xml文件及Suite套件介绍"><a href="#TestNG-xml文件及Suite套件介绍" class="headerlink" title="TestNG-xml文件及Suite套件介绍"></a>TestNG-xml文件及Suite套件介绍</h2><p>.XML文件可以提供的功能：</p>
+<p>可以将不同包，类的测试方法集中到一个套件中有选择的进行执行</p>
+<p>可以重跑失败用例，节省校验时间</p>
+<p>可以使用正则表达式筛选测试方法</p>
+<p>可以把外部参数传入测试方法中</p>
+<p>支持多线程的配置环境</p>
+<p>那么，该如何创建和运用.xml’文件进行测试套件的配置呢？</p>
+<p>首先在src目录下创建name.xml文件，name可以为任意名字</p>
+<p><img src="/2019/08/09/TestNG入门-一-TestNG-xml文件及Suite套件介绍/1.png" alt="1"></p>
+<p>配置.xml文件，基本代码如下：</p>
+<p><img src="/2019/08/09/TestNG入门-一-TestNG-xml文件及Suite套件介绍/2.png" alt="2"></p>
+<p>其中，class name为你想测试的某个测试类的地址，在例子中，文件地址在com.company文件夹下的Main类</p>
+<p>右键空白处remake这个.xml文件之后就可以运行这个测试套件了</p>
+<p>下面展示一下，装入不同的测试类到同一个套件中</p>
+<p>和上次一样，在.xml文件中配置测试类文件，但不同的是，在class中配置多个测试类文件而不是单个</p>
+<p><img src="/2019/08/09/TestNG入门-一-TestNG-xml文件及Suite套件介绍/3.png" alt="3"></p>
+<p>这时测试类文件的位置：</p>
+<p><img src="/2019/08/09/TestNG入门-一-TestNG-xml文件及Suite套件介绍/4.png" alt="4"></p>
+<p>右键.xml文件空白处，运行测试套件得到测试结果</p>
+<p><img src="/2019/08/09/TestNG入门-一-TestNG-xml文件及Suite套件介绍/5.png" alt="5"></p>
+<p>测试正常运行</p>
+<p>Testng.xml 标签说明</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE suite SYSTEM &quot;http://testng.org/testng-1.0.dtd&quot;&gt;</span><br><span class="line">&lt;!--suite（测试套件）为根路径，仅允许出现1次，是多个test（测试用例）的集合，以下为各属性含义及取值</span><br><span class="line">    @name 必填，标记suite的名称</span><br><span class="line">    @junit 选填，是否以junit模式运行，可选值（true|false） 默认值&quot;false&quot;</span><br><span class="line">    @verbose 选填，命令行信息打印等级（与测报内容无关），可在测试代码注释中配置，可选值（1|2|3|4|5）</span><br><span class="line">    @parallel 选填，是否多线程并发运行测试，可选值(false | methods | tests | classes | instances)，默认 &quot;false&quot;</span><br><span class="line">    @thread-count 选填，填写值为正整数，当为并发执行时的线程池数量，默认为&quot;5&quot;</span><br><span class="line">    @configfailurepolicy 一旦Before/After Class/Methods这些方法失败后，是继续执行测试还是跳过测试；可选值 (skip | continue)，默认&quot;skip</span><br><span class="line">    @annotations=&quot;javadoc&quot; 获取注解的位置，如果为&quot;javadoc&quot;, 则使用javadoc注解，否则使用jdk注解</span><br><span class="line">    @time-out 为具体执行单元设定一个超时时间，具体参照parallel的执行单元设置；单位为毫秒</span><br><span class="line">    @skipfailedinvocationcounts 是否跳过失败的调用，可选值(true | false)，默认&quot;false&quot;</span><br><span class="line">    @data-provider-thread-count 并发执行时data-provider的线程池数量，默认为&quot;10&quot;</span><br><span class="line">    @object-factory 一个实现IObjectFactory接口的类，用来实例测试对象</span><br><span class="line">    @allow-return-values=&quot;true&quot; 是否允许返回函数值，可选值(true | false)，默认&quot;false&quot;</span><br><span class="line">    @preserve-order：顺序执行开关，可选值(true | false) &quot;true&quot;</span><br><span class="line">    @group-by-instances：是否按实例分组，可选值(true | false) &quot;false&quot;</span><br><span class="line">    @guice-stage 支持使用JSR-330的@Inject注解来配置运行时提供的实例</span><br><span class="line">    @parent-module 和Guice框架有关，只运行一次，创建一个parent injector给所有guice injectors</span><br><span class="line">    --&gt;</span><br><span class="line">&lt;suite name=&quot;suitename&quot; junit=&quot;false&quot; verbose=&quot;3&quot; parallel=&quot;false&quot; thread-count=&quot;5&quot; configfailurepolicy=&quot;skip&quot;</span><br><span class="line">       annotations=&quot;javadoc&quot; time-out=&quot;10000&quot; skipfailedinvocationcounts=&quot;true&quot; data-provider-thread-count=&quot;5&quot;</span><br><span class="line">       object-factory=&quot;classname&quot; allow-return-values=&quot;true&quot; preserve-order=&quot;true&quot; group-by-instances=&quot;false&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!--可以执行多个suite，@path 必填，欲引用的suitefile的绝对路径--&gt;</span><br><span class="line">    &lt;suite-files&gt;</span><br><span class="line">        &lt;suite-file path=&quot;/path/to/suitefile1&quot;&gt;&lt;/suite-file&gt;</span><br><span class="line">    &lt;/suite-files&gt;</span><br><span class="line">    &lt;!--全局参数，@name和@value必填，分别为参数名和参数值--&gt;</span><br><span class="line">    &lt;parameter name=&quot;par1&quot; value=&quot;value1&quot;&gt;&lt;/parameter&gt;</span><br><span class="line">    &lt;parameter name=&quot;par2&quot; value=&quot;value2&quot;&gt;&lt;/parameter&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!--方法选择器，在suite/test中增加需要额外执行的类（根据父标签而定），及安排执行优先级--&gt;</span><br><span class="line">    &lt;method-selectors&gt;</span><br><span class="line">        &lt;method-selector&gt;</span><br><span class="line">            &lt;!--</span><br><span class="line">                @name 必填</span><br><span class="line">                @priority 选填</span><br><span class="line">                --&gt;</span><br><span class="line">            &lt;selector-class name=&quot;classname&quot; priority=&quot;1&quot;&gt;&lt;/selector-class&gt;</span><br><span class="line">            &lt;!--</span><br><span class="line">                @language 必填</span><br><span class="line">                --&gt;</span><br><span class="line">            &lt;script language=&quot;java&quot;&gt;&lt;/script&gt;</span><br><span class="line">        &lt;/method-selector&gt;</span><br><span class="line">    &lt;/method-selectors&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!--test定义一次测试执行，以下为各属性含义及取值</span><br><span class="line">        @name：必填，test的名字，测试报告中会有体现</span><br><span class="line">        @junit：选填，是否以Junit模式运行，可选值(true | false)，默认&quot;false&quot;</span><br><span class="line">        @verbose：选填，命令行信息打印等级，不会影响测试报告输出内容；可选值(1|2|3|4|5)</span><br><span class="line">        @parallel：选填，是否多线程并发运行测试；可选值(false | methods | tests | classes | instances)，默认 &quot;false&quot;</span><br><span class="line">        @thread-count：选填，当为并发执行时的线程池数量，默认为&quot;5&quot;</span><br><span class="line">        @annotations：选填，获取注解的位置，如果为&quot;javadoc&quot;, 则使用javadoc注解，否则使用jdk5注解</span><br><span class="line">        @time-out：选填，为具体执行单元设定一个超时时间，具体参照parallel的执行单元设置；单位为毫秒</span><br><span class="line">        @enabled：选填，设置当前test是否生效，可选值(true | false)，默认&quot;true&quot;</span><br><span class="line">        @skipfailedinvocationcounts：选填，是否跳过失败的调用，可选值(true | false)，默认&quot;false&quot;</span><br><span class="line">        @preserve-order：选填，顺序执行开关，可选值(true | false) &quot;true&quot;</span><br><span class="line">        @group-by-instances：选填，是否按实例分组，可选值(true | false) &quot;false&quot;</span><br><span class="line">        @allow-return-values：选填，是否允许返回函数值，可选值(true | false)，默认&quot;false&quot;</span><br><span class="line">        --&gt;</span><br><span class="line">    &lt;test name=&quot;testename&quot; junit=&quot;false&quot; verbose=&quot;3&quot; parallel=&quot;false&quot; thread-count=&quot;5&quot; annotations=&quot;javadoc&quot;</span><br><span class="line">          time-out=&quot;10000&quot; enabled=&quot;true&quot; skipfailedinvocationcounts=&quot;true&quot; preserve-order=&quot;true&quot;</span><br><span class="line">          allow-return-values=&quot;true&quot;&gt;</span><br><span class="line">        &lt;!--局部参数，@name和@value必填，分别为参数名和参数值，如果参数名与全局参数一致，则覆盖全局参数取值--&gt;</span><br><span class="line">        &lt;parameter name=&quot;par1&quot; value=&quot;value1&quot;&gt;&lt;/parameter&gt;</span><br><span class="line">        &lt;parameter name=&quot;par2&quot; value=&quot;value2&quot;&gt;&lt;/parameter&gt;</span><br><span class="line">        &lt;!--搭配class使用，执行class内指定组--&gt;</span><br><span class="line">        &lt;groups&gt;</span><br><span class="line">            &lt;!--定义执行组名，在run中使用</span><br><span class="line">                @name 必填，组中组的名称</span><br><span class="line">            --&gt;</span><br><span class="line">            &lt;define name=&quot;xxx&quot;&gt;</span><br><span class="line">                &lt;!--定义包含的测试组，测试方法属于哪个测试组在测试代码注释中定义。</span><br><span class="line">                    @name 必填，需要包含进组中组的组名</span><br><span class="line">                    @description 选填，关于组的描述</span><br><span class="line">                    @invocation-numbers 选填，执行次序或者执行次数——TODO</span><br><span class="line">                    --&gt;</span><br><span class="line">                &lt;include name=&quot;&quot; description=&quot;&quot; invocation-numbers=&quot;&quot;/&gt;</span><br><span class="line">                &lt;include name=&quot;&quot; description=&quot;&quot; invocation-numbers=&quot;&quot;/&gt;</span><br><span class="line">            &lt;/define&gt;</span><br><span class="line">            &lt;!--运行组中组的配置--&gt;</span><br><span class="line">            &lt;run&gt;</span><br><span class="line">                &lt;!--执行指定的组中组，@name必填，与define name一致--&gt;</span><br><span class="line">                &lt;include name=&quot;&quot;/&gt;</span><br><span class="line">                &lt;!--排除指定的组中组，@name必填，与define name一致--&gt;</span><br><span class="line">                &lt;exclude name=&quot;&quot;/&gt;</span><br><span class="line">            &lt;/run&gt;</span><br><span class="line">            &lt;!--组中组的依赖配置--&gt;</span><br><span class="line">            &lt;dependencies&gt;</span><br><span class="line">                &lt;!--配置依赖</span><br><span class="line">                    @name 必填，需要依赖其他组的组名，define中设置</span><br><span class="line">                    @depends-on 必填，被依赖的组名，define中设置，可以有多个，用空格隔开</span><br><span class="line">                    --&gt;</span><br><span class="line">                &lt;group name=&quot;&quot; depends-on=&quot;&quot;&gt;&lt;/group&gt;</span><br><span class="line">                &lt;group name=&quot;&quot; depends-on=&quot;&quot;&gt;&lt;/group&gt;</span><br><span class="line">            &lt;/dependencies&gt;</span><br><span class="line">        &lt;/groups&gt;</span><br><span class="line">        &lt;!--配置要执行的类，是多个class的集合--&gt;</span><br><span class="line">        &lt;classes&gt;</span><br><span class="line">            &lt;!--局部参数，@name和@value必填，分别为参数名和参数值，如果参数名与全局参数和父标签的局部参数一致，则覆盖全局参数和父标签的局部参数取值--&gt;</span><br><span class="line">            &lt;parameter name=&quot;par1&quot; value=&quot;value1&quot;&gt;&lt;/parameter&gt;</span><br><span class="line">            &lt;parameter name=&quot;par2&quot; value=&quot;value2&quot;&gt;&lt;/parameter&gt;</span><br><span class="line">            &lt;!--多个methods的集合，@name 必填，对应class的名称，如com.example.autotest.testcase--&gt;</span><br><span class="line">            &lt;class name=&quot;classname&quot;&gt;</span><br><span class="line">                &lt;!--要执行的方法，如为空，则执行整个class内包含的全部方法--&gt;</span><br><span class="line">                &lt;methods&gt;</span><br><span class="line">                    &lt;!--局部参数，@name和@value必填，分别为参数名和参数值，如果参数名与全局参数和父标签的局部参数一致，则覆盖全局参数和父标签的局部参数取值--&gt;</span><br><span class="line">                    &lt;parameter name=&quot;par3&quot; value=&quot;value3&quot;&gt;&lt;/parameter&gt;</span><br><span class="line">                    &lt;!--类内要执行的测试方法名，在测试代码注释中配置，如设置inclde，则只执行该方法，其他跳过</span><br><span class="line">                        @name 必填，执行方法名</span><br><span class="line">                        @description 选填，方法描述</span><br><span class="line">                        @invocation-number 选填，宣发执行顺序或执行次数——TODO</span><br><span class="line">                        --&gt;</span><br><span class="line">                    &lt;include name=&quot;&quot; description=&quot;&quot; invocation-numbers=&quot;&quot;&gt;&lt;/include&gt;</span><br><span class="line">                    &lt;!--除了该方法外，类内其他方法都执行，@name 必填，不执行的方法名--&gt;</span><br><span class="line">                    &lt;exclude name=&quot;&quot;&gt;&lt;/exclude&gt;</span><br><span class="line">                &lt;/methods&gt;</span><br><span class="line">                &lt;methods&gt;&lt;/methods&gt;</span><br><span class="line">            &lt;/class&gt;</span><br><span class="line">        &lt;/classes&gt;</span><br><span class="line">        &lt;!--可以执行指定包下面所有类，是多个package的汇聚--&gt;</span><br><span class="line">        &lt;packages&gt;</span><br><span class="line">            &lt;!--配置要执行的包，@name 必填，要执行的package名，如com.example.autotest--&gt;</span><br><span class="line">            &lt;package name=&quot;&quot;&gt;</span><br><span class="line">                &lt;!--包内要执行的测试方法名，在测试代码注释中配置，如设置inclde，则只执行该方法，其他跳过</span><br><span class="line">                    @name 必填，执行方法名</span><br><span class="line">                    @description 选填，方法描述</span><br><span class="line">                    @invocation-number 选填，宣发执行顺序或执行次数——TODO</span><br><span class="line">                    --&gt;</span><br><span class="line">                &lt;include name=&quot;&quot; description=&quot;&quot; invocation-numbers=&quot;&quot;&gt;&lt;/include&gt;</span><br><span class="line">                &lt;!--除了该方法外，包内其他方法都执行，name 必填，不执行的方法名--&gt;</span><br><span class="line">                &lt;exclude name=&quot;&quot;&gt;&lt;/exclude&gt;</span><br><span class="line">            &lt;/package&gt;</span><br><span class="line">        &lt;/packages&gt;</span><br><span class="line">    &lt;/test&gt;</span><br><span class="line">    &lt;!--设置监听的类名，可设置多个，class-name 必填，类名，如com.example.autotest.Listener--&gt;</span><br><span class="line">    &lt;listeners&gt;</span><br><span class="line">        &lt;listener class-name=&quot;classname1&quot;/&gt;</span><br><span class="line">        &lt;listener class-name=&quot;classname2&quot;/&gt;</span><br><span class="line">    &lt;/listeners&gt;</span><br><span class="line">&lt;/suite&gt;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/08/TestNG入门-一-TestNG的语法介绍/" rel="next" title="TestNG入门-一-TestNG的语法介绍">
+                <i class="fa fa-chevron-left"></i> TestNG入门-一-TestNG的语法介绍
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Barry Hu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#TestNG入门小结"><span class="nav-number">1.</span> <span class="nav-text">TestNG入门小结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#TestNG-xml文件及Suite套件介绍"><span class="nav-number">1.1.</span> <span class="nav-text">TestNG-xml文件及Suite套件介绍</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Barry Hu</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
